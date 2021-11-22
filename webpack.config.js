@@ -1,6 +1,6 @@
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -8,7 +8,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
-const filename = ext => (isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`);
+const filename = (ext) => (isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`);
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -16,7 +16,7 @@ module.exports = {
   entry: ['@babel/polyfill', './index.js'],
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
   },
   resolve: {
     extensions: ['.js'],
@@ -27,14 +27,19 @@ module.exports = {
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
-    port: 3000,
-    hot: isDev,
+    watchFiles: ['src'],
+    hot: true,
+    liveReload: true,
+    open: true,
+    port: 3050,
   },
   plugins: [
     new ESLintPlugin({}),
     new CleanWebpackPlugin(),
-    new HTMLWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: 'index.html',
+      filename: 'index.html',
+      inject: 'body',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd,
