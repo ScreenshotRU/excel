@@ -1,6 +1,6 @@
 class Dom {
   constructor(selector) {
-    this.$$listeners = {}
+    this.$$listeners = {};
     this.$el =
       typeof selector === 'string'
         ? document.querySelector(selector)
@@ -40,6 +40,14 @@ class Dom {
     }
 
     return this;
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect();
   }
 }
 
