@@ -23,7 +23,7 @@ function createRow(index, content) {
     ? '<div class="row-resize" data-resize="row"></div>'
     : '';
   return `
-    <div class="row">
+    <div class="row" data-type="resizeable">
         <div class="row-info">
             ${index ? index : ''}
             ${resize}
