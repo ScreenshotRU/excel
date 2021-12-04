@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "lint": "npx eslint ./src"
+    "lint": "npx eslint ./src",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/ScreenshotRU/excel/issues"
   },
-  "homepage": "https://github.com/ScreenshotRU/excel#readme",
+  "homepage": "https://github.com/ScreenshotRU/excel",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -37,6 +38,7 @@
     "eslint": "^8.3.0",
     "eslint-config-google": "^0.14.0",
     "eslint-webpack-plugin": "^3.1.1",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "sass": "^1.43.4",
