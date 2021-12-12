@@ -1,6 +1,5 @@
 class Dom {
   constructor(selector) {
-    this.$$listeners = {};
     this.$el =
       typeof selector === 'string'
         ? document.querySelector(selector)
@@ -121,8 +120,6 @@ class Dom {
     return this;
   }
 }
-
-$('div').html('<h1>Test</h1>').clear();
 
 export function $(selector) {
   return new Dom(selector);
