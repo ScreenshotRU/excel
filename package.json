@@ -4,11 +4,17 @@
   "description": "Excel-like app on pure JS",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --watch",
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "lint": "npx eslint ./src",
     "deploy": "gh-pages -d dist"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -48,7 +54,11 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@babel/polyfill": "^7.12.1",
+    "babel-jest": "^27.4.4",
+    "eslint-plugin-jest": "^25.3.0",
+    "jest": "^27.4.4",
     "normalize.css": "^8.0.1"
   },
   "babel": {}
